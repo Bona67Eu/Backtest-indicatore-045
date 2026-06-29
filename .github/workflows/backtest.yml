@@ -1,0 +1,23 @@
+name: Run Backtest
+
+on:
+  workflow_dispatch:   # avvio manuale da browser
+
+jobs:
+  run-backtest:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run backtest
+        run: python "003_simulatore_portfolio_045_v2_2_al_27_06_26.py"
